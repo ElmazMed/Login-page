@@ -12,7 +12,11 @@
 <body>
     <div class="login-container">
         <div class="left-side">
-            <h1>Welcome to My Todo</h1>
+            <div class="overlay"></div>
+                <h1>Welcome to My Todo</h1>
+            <div class="m-logo">
+                <h2>M</h2>
+            </div>
             <img src="imgs/todo-illustration.svg" alt="">
         </div>
         <div class="right-side">
@@ -21,21 +25,21 @@
                 <p>Welcome, please login to your account</p>
             </div>
             <div id="formmsg">
-                <h3>Log in</h3>
+                <h3 id="themsg">Log in</h3>
             </div>
-            <form action="" method="post">
+            <form id="myform" action="" method="post">
                     
                     <label for="">Username or Email:</label>
-                    <input type="email" name="email" id="email" placeholder="Enter your username or email">
+                    <input type="text" name="email" id="email" placeholder="Enter your username or email">
 
                     <label for="">Password:</label>
-                    <input type="password" name="pass" id="password" placeholder="Enter your password">
+                    <input type="password" name="pass" id="pass" placeholder="Enter your password">
 
                 <div class="show-pass">
                     <label for="">Show password</label>
-                    <input type="checkbox" name="" id="">
+                    <input type="checkbox" name="" id="show">
                 </div>
-                <button type="submit">Login</button>
+                <button id="btn" type="submit">Login</button>
             </form>
         </div>
     </div>
