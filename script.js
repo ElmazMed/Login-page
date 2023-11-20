@@ -1,47 +1,60 @@
 const formMsg = document.getElementById('themsg');
 const myForm = document.getElementById('myform');
-const password = document.getElementById('pass');
-const mail = document.getElementById('email');
-const showPass = document.getElementById('show');
-const btn = document.getElementById('btn');
+const showPass = document.getElementsByClassName('show-pass')[0];
 
-const users = [{
-    user: 'mohamed',
+const users = [
+{
+    userName: 'mohamed',
     pass: '1234',
 },
 {
-    user: 'salah',
+    userName: 'salah',
     pass: '123',
+},
+{
+    userName: 'ilyass',
+    pass: 'user23'
+},
+{
+    userName: 'khalid',
+    pass: 'user23'
 }
 ]
 
-myForm.addEventListener('submit', formCheck);
-
-/* let user = mail.value;
-let thePass = password.value; */
-function formCheck(e) {
+myForm.addEventListener('submit', (e) => {
     e.preventDefault()
-    console.log("mail.value:", mail.value);
-    console.log("password.value:", password.value);
+    const mail = document.getElementById('email').value.toLowerCase();
+    const password = document.getElementById('pass').value;
+    let isCorrect = false
+    
+    for(let user of users) {
 
-    if(mail.value == "" ) {
-
-        e.preventDefault()
-
-        formMsg.textContent = "Email is required"
-        formMsg.style.color = "crimson"
-        formMsg.style.fontSize = "1.5rem"
-
-    } else if(password.value == "" ) {
-
-        e.preventDefault()
-
-        formMsg.textContent = "Password is required"
-        formMsg.style.color = "crimson"
-        formMsg.style.fontSize = "1.5rem"
+        if(mail == '' && password == '') {
+            formMsg.innerText = 'Please fill out the fields.'
+            formMsg.style.color = 'crimson'
+            formMsg.style.fontSize = '1.5rem'
+            return
+        
+        } else if(mail == user.userName.toLowerCase() && password == user.pass) {
+           isCorrect = true       
+        }
     }
-     else {
-        formMsg.textContent = "Thank you!"
-        formMsg.style.color = "var(--primary-color)"
+    if(isCorrect == false) {
+        formMsg.innerText = 'Credentials are NOT correct'
+        formMsg.style.color = 'crimson'
+        formMsg.style.fontSize = '1.5rem'
+    
+    }else {
+        formMsg.innerText = 'Credentials are correct'
+        formMsg.style.color = 'var(--primary-color)'
     }
-}
+})
+
+showPass.addEventListener('click',  ()=> {
+    const password = document.getElementById('pass')
+    if(password.type === 'password'){
+        password.type = 'text'
+    }else {
+        password.type = 'password'
+    }
+})

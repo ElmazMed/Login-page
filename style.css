@@ -33,13 +33,18 @@ body, html {
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    min-height: 100%;
+    flex: 1;
     padding: 1.5rem;
+    min-height: 100%;
     min-width: 50%;
     z-index: 1;
     position: relative;
     overflow: hidden;
-    display: none;
+}
+@media (max-width: 630px) {
+    .login-container .left-side {
+        min-height: fit-content;
+    }
 }
 .login-container .left-side .overlay {
     background-color: var(--primary-color);
@@ -48,6 +53,9 @@ body, html {
     width: 100%;
     position: absolute;
     z-index: -1;
+}
+.login-container .left-side h1 {
+    text-align: center;
 }
 .login-container .left-side .m-logo {
     display: flex;
@@ -66,6 +74,11 @@ body, html {
 .login-container .left-side img {
     max-width: 100%;
 }
+@media (max-width: 630px) {
+    .login-container .left-side img {
+        display: none;
+    }
+ }
 .login-container .right-side {
     background-color: var(--white-color);
     display: flex;
@@ -123,6 +136,11 @@ body, html {
 .login-container .right-side label {
     min-width: 59%;
 }
+@media (max-width: 630px) {
+    .login-container .right-side form label {
+        width: 99%;
+    }
+ }
 .login-container .right-side form #email, #pass {
     border: 1px solid var(--tone-gary-clr);
     border-radius: 0.25rem;
@@ -133,18 +151,34 @@ body, html {
     padding: 0.8rem 0.5rem 1rem 0.5rem;
     width: 60%;
 }
+@media (max-width: 630px) {
+    .login-container .right-side form #email, #pass {
+        width: 100%;
+    }
+ }
 .login-container .right-side form .show-pass {
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
     justify-content: flex-end;
+    cursor: pointer;
     margin-bottom: 3rem;
     margin-top: -2rem;
     gap: 0.3rem;
     width: 59%;
 }
+.login-container .right-side form .show-pass label {
+    min-width: fit-content;
+}
+@media (max-width: 630px) {
+    .login-container .right-side form .show-pass {
+        width: 99%;
+    }
+ }
 .login-container .right-side form .show-pass input {
     cursor: pointer;
+    height: 18px;
+    width: 18px;
 }
 .login-container .right-side form button {
     background-color: var(--primary-color);
